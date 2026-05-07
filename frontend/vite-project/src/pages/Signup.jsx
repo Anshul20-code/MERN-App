@@ -10,7 +10,7 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:8080/auth/signup", {
+    const res = await fetch("https://mern-app-fs00.onrender.com/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ function Products() {
       return;
     }
 
-    fetch("http://localhost:8080/products", {
+  fetch("https://mern-app-fs00.onrender.com/products", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
