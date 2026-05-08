@@ -13,9 +13,9 @@ function Products() {
       return;
     }
 
-  fetch("https://mern-app-fs00.onrender.com/products", {
+  fetch(`${import.meta.env.VITE_API_URL}/products`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+       Authorization: token,
       },
     })
       .then(res => res.json())
@@ -49,30 +49,31 @@ function Products() {
           Available Products
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          {data.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl shadow hover:shadow-lg transition p-5 border"
-            >
-              <h3 className="text-lg font-bold text-gray-800">
-                {item.name}
-              </h3>
+  {Array.isArray(data) &&
+    data.map((item, i) => (
+      <div
+        key={i}
+        className="bg-white rounded-xl shadow hover:shadow-lg transition p-5 border"
+      >
+        <h3 className="text-lg font-bold text-gray-800">
+          {item.name}
+        </h3>
 
-              <p className="text-gray-500 mt-2">
-                Product ID: #{i + 1}
-              </p>
+        <p className="text-gray-500 mt-2">
+          Product ID: #{i + 1}
+        </p>
 
-              <div className="mt-4 text-green-600 font-semibold text-lg">
-                ₹{item.price}
-              </div>
+        <div className="mt-4 text-green-600 font-semibold text-lg">
+          ₹{item.price}
+        </div>
 
-              <button className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg">
-                Buy Now
-              </button>
-            </div>
-          ))}
+        <button className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg">
+          Buy Now
+        </button>
+      </div>
+  ))}
 
         </div>
       </div>
